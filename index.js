@@ -15,7 +15,6 @@ const PORT = process.env.PORT || 4100;
 
 app.post("/paynow", [parseUrl, parseJson], (req, res) => {
   // Route for making payment
-  console.log(">>>>",req.body)
   var paymentDetails = {
     orderID: req.body.id,
     amount: req.body.cost,
@@ -24,7 +23,6 @@ app.post("/paynow", [parseUrl, parseJson], (req, res) => {
     customerPhone: req.body.phone,
     customerRest: req.body.rest_name
 }
-console.log('payment>>>>',paymentDetails)
 if(!paymentDetails.amount || !paymentDetails.customerId || !paymentDetails.customerEmail || !paymentDetails.customerPhone || !paymentDetails.customerRest) {
     res.status(400).send('Payment failed')
 } else {
